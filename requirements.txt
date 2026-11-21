@@ -1,0 +1,7 @@
+torch>=2.1
+torchvision>=0.16
+# torch 2.2.x (the last release for Intel Macs) was built against NumPy 1.x
+numpy<2; platform_system == "Darwin" and platform_machine == "x86_64"
+numpy; platform_system != "Darwin" or platform_machine != "x86_64"
+pillow>=10.1
+matplotlib

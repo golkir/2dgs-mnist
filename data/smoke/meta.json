@@ -1,0 +1,73 @@
+{
+  "dataset": "synthetic",
+  "split": "train",
+  "image_size": [
+    28,
+    28
+  ],
+  "channels": 1,
+  "n_gaussians": 256,
+  "fit_config": {
+    "n_gaussians": 256,
+    "iters": 300,
+    "lr_mu": 0.003,
+    "lr_shape": 0.01,
+    "lr_color": 0.01,
+    "sigma_frac": 0.6,
+    "min_sigma_px": 0.3,
+    "max_sigma_frac": 0.5,
+    "nonneg_color": true,
+    "mu_bound": 1.1,
+    "dead_thresh": 0.001,
+    "reset_dead": true
+  },
+  "conventions": {
+    "coords": "normalised [-1,1]; x right, y down; pixel centre j -> (j+0.5)/W*2-1",
+    "render": "I(p) = sum_i color_i * exp(-0.5 (p-mu_i)^T Sigma_i^-1 (p-mu_i)); no opacity, no sorting",
+    "shape": "(log s1, log s2, theta); Sigma = R(theta) diag(s1^2, s2^2) R(theta)^T; theta in [-pi/2, pi/2)",
+    "cov": "(s11, s12, s22) of Sigma",
+    "order": "slot k started at grid cell k (row-major, sqrt(N) x sqrt(N)) for every image",
+    "alive": "False = unused Gaussian, reset to its slot with colour 0 (renders nothing)"
+  },
+  "num_images": 16,
+  "psnr_mean": 37.06935119628906,
+  "psnr_p05": 33.41987609863281,
+  "psnr_min": 33.10545349121094,
+  "all_cov_positive_definite": true,
+  "alive_fraction": 0.186767578125,
+  "tensors": {
+    "mu": [
+      16,
+      256,
+      2
+    ],
+    "shape": [
+      16,
+      256,
+      3
+    ],
+    "color": [
+      16,
+      256,
+      1
+    ],
+    "alive": [
+      16,
+      256
+    ],
+    "psnr": [
+      16
+    ],
+    "label": [
+      16
+    ],
+    "index": [
+      16
+    ],
+    "cov": [
+      16,
+      256,
+      3
+    ]
+  }
+}
